@@ -21,7 +21,7 @@ builder.Services.AddChatClient(services =>
       !string.IsNullOrEmpty(apiKey)
         ? new AzureOpenAIClient(new Uri(endpoint!), new AzureKeyCredential(apiKey))
         : new AzureOpenAIClient(new Uri(endpoint!), new DefaultAzureCredential())
-    ).GetChatClient("gpt-4o").AsIChatClient()
+    ).GetChatClient(model).AsIChatClient()
   )
   .UseFunctionInvocation()
   .Build());

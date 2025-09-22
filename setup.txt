@@ -1,0 +1,23 @@
+mkdir AspMCP
+cd AspMCP
+dotnet new sln
+dotnet new web -n ServerMCP
+dotnet sln add ./ServerMCP/ServerMCP.csproj
+cd ServerMCP
+mkdir McpTools
+dotnet add package Azure.AI.OpenAI
+dotnet add package Microsoft.Extensions.AI
+dotnet add package Microsoft.Extensions.AI.OpenAI --prerelease
+dotnet add package ModelContextProtocol --prerelease
+dotnet add package ModelContextProtocol.AspNetCore --prerelease
+cd ..
+dotnet new webapi --use-controllers -n ClientMCP
+dotnet sln add ./ClientMCP/ClientMCP.csproj
+cd ClientMCP
+dotnet add package Azure.AI.OpenAI
+dotnet add package Azure.Identity
+dotnet add package Microsoft.Extensions.AI
+dotnet add package Microsoft.Extensions.AI.OpenAI --prerelease
+dotnet add package ModelContextProtocol --prerelease
+dotnet add package Swashbuckle.AspNetCore
+cd ..
